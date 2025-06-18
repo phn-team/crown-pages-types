@@ -38,7 +38,7 @@ export const DEFAULT_THEME: ThemeConfig = {
     secondary: "#374151", // gray-700
     muted: "#6B7280", // gray-500
   },
-  fontFamily: "",
+  fontFamily: "Inter",
 };
 
 // Predefined theme options
