@@ -818,7 +818,78 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
             }
         },
         version: '1.0.0'
-    }
+    },
+
+    links: {
+        type: 'links',
+        name: 'Links Section',
+        description: 'Display a list of useful links',
+        category: 'data',
+        icon: {
+            mobile: 'link-outline',
+            web: 'link'
+        },
+        fields: {
+            title: {
+                type: 'text',
+                required: true,
+                label: 'Section Title',
+                placeholder: 'Link List',
+                maxLength: 80
+            },
+            links: {
+                type: 'array',
+                required: true,
+                label: 'Links',
+                minItems: 1,
+                maxItems: 20,
+                itemSchema: {
+
+                    title: {
+                        type: 'text',
+                        required: true,
+                        label: 'Link Title',
+                        placeholder: 'Link 1',
+                        maxLength: 100
+                    },
+                    url: {
+                        type: 'text',
+                        required: false,
+                        label: 'URL',
+                        placeholder: 'https://www.example.com',
+                        maxLength: 300
+                    }
+                }
+            }
+        },
+        defaultData: {
+            title: 'Link List',
+            links: [
+                {
+                    id: 'temp_link_1',
+                    title: 'Link 1',
+                    url: 'https://www.google.com'
+                }
+            ]
+        },
+        styleOptions: {
+            canOverride: ['colors', 'typography', 'spacing', 'layout'],
+            colorFields: ['primary', 'background', 'text']
+        },
+        renderingHints: {
+            mobile: {
+                height: 'auto',
+                spacing: 'normal',
+                layout: 'single'
+            },
+            web: {
+                responsive: true,
+                container: 'contained',
+                animation: false
+            }
+        },
+        version: '1.0.0'
+    },
 };
 
 // Helper Functions
