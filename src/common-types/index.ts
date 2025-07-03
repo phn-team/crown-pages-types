@@ -103,3 +103,21 @@ export const TestimonialOptions: TestimonialAssetOptions[] = [
   { type: "image", icon: "image" },
 ];
 
+
+
+export interface BusinessData {
+  id: string;
+  name: string;
+  logo_url: string | null;
+  primary_color: string | null;
+  secondary_color: string | null;
+  font_family: string | null;
+  email: string | null;
+  phone: string | null;
+  website: string | null;
+  street_address: string | null;
+  city: string | null;
+  state: string | null;
+  zip_code: string | null;
+  country: string | null;
+}
