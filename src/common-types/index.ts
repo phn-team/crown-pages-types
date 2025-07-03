@@ -98,10 +98,6 @@ export interface TestimonialAssetOptions {
   icon: string;
 }
 
-export const TestimonialOptions: TestimonialAssetOptions[] = [
-  { type: "video", icon: "videocam" },
-  { type: "image", icon: "image" },
-];
 
 
 
