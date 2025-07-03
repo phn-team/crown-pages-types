@@ -69,3 +69,37 @@ export const THEME_PRESETS = {
     accent: "#F59E0B",
   },
 };
+
+
+
+
+
+export type TestinomialsAsset = {
+  id: string;
+  publicUrl: string;
+  asset_type: "video" | "image";
+};
+
+export interface Testimonial {
+  id: string;
+  name: string;
+  position?: string;
+  company?: string;
+  text: string;
+  rating: number;
+  avatar: string;
+  asset_type: "video" | "image";
+  video_uri: string;
+  index?: number;
+}
+
+export interface TestimonialAssetOptions {
+  type: "video" | "image";
+  icon: string;
+}
+
+export const TestimonialOptions: TestimonialAssetOptions[] = [
+  { type: "video", icon: "videocam" },
+  { type: "image", icon: "image" },
+];
+
