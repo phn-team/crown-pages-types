@@ -1,14 +1,14 @@
 export interface SectionStyles {
 
+  primary: string,
+  secondary: string,
+  background: string,
+  surface: string,
+  text: {
     primary: string,
     secondary: string,
-    background: string,
-    surface: string,
-    text: {
-        primary: string,
-        secondary: string,
-        muted: string,
-    },
+    muted: string,
+  },
 
 }
 
@@ -89,6 +89,7 @@ export interface Testimonial {
   rating: number;
   avatar: string;
   asset_type: "video" | "image";
+  testimonial_image?: string;
   video_uri: string;
   index?: number;
 }
