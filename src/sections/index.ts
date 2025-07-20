@@ -83,12 +83,27 @@ export interface RenderingHints {
         height?: 'auto' | 'viewport' | string;
         spacing?: 'compact' | 'normal' | 'spacious';
         layout?: 'single' | 'grid' | 'carousel';
+        specialFeatures?: {
+            addToContacts?: boolean;
+            quickActions?: boolean;
+            shareCard?: boolean;
+            oneHandUsable?: boolean;
+            swipeActions?: boolean;
+        };
     };
     web: {
         height?: string;
         responsive?: boolean;
         container?: 'full' | 'contained' | 'narrow';
         animation?: boolean;
+        specialFeatures?: {
+            hoverEffects?: boolean;
+            qrCode?: boolean;
+            vCard?: boolean;
+            socialPreview?: boolean;
+            printOptimized?: boolean;
+            copyToClipboard?: boolean;
+        };
     };
 }
 
@@ -468,6 +483,160 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
                 responsive: true,
                 container: 'contained',
                 animation: false
+            }
+        },
+        version: '1.0.0'
+    },
+
+    personalContact: {
+        type: 'personalContact',
+        name: 'Personal Contact Card',
+        description: 'Share your personal contact information as a digital business card',
+        category: 'data',
+        icon: {
+            mobile: 'person-circle-outline',
+            web: 'user-circle'
+        },
+        fields: {
+            name: {
+                type: 'text',
+                required: true,
+                label: 'Full Name',
+                placeholder: 'Parker Frasure',
+                maxLength: 100
+            },
+            title: {
+                type: 'text',
+                required: false,
+                label: 'Title/Position',
+                placeholder: 'Professional Health Network',
+                maxLength: 150
+            },
+            phone: {
+                type: 'text',
+                required: false,
+                label: 'Phone Number',
+                placeholder: '(555) 123-4567'
+            },
+            email: {
+                type: 'text',
+                required: false,
+                label: 'Email',
+                placeholder: 'parker@example.com'
+            },
+            photo: {
+                type: 'image',
+                required: false,
+                label: 'Profile Photo',
+                accept: ['jpg', 'jpeg', 'png', 'webp'],
+                maxSize: 2
+            },
+            website: {
+                type: 'text',
+                required: false,
+                label: 'Website',
+                placeholder: 'https://www.yourwebsite.com'
+            },
+            bio: {
+                type: 'textarea',
+                required: false,
+                label: 'Short Bio',
+                placeholder: 'Brief description about yourself...',
+                maxLength: 300,
+                rows: 3
+            },
+            customLinks: {
+                type: 'array',
+                required: false,
+                label: 'Custom Links',
+                maxItems: 8,
+                itemSchema: {
+                    type: {
+                        type: 'select',
+                        required: true,
+                        label: 'Link Type',
+                        options: [
+                            { label: 'LinkedIn', value: 'linkedin', icon: 'logo-linkedin', preview: 'Professional networking' },
+                            { label: 'Instagram', value: 'instagram', icon: 'logo-instagram', preview: 'Photo sharing' },
+                            { label: 'Twitter/X', value: 'twitter', icon: 'logo-twitter', preview: 'Social media' },
+                            { label: 'Facebook', value: 'facebook', icon: 'logo-facebook', preview: 'Social network' },
+                            { label: 'TikTok', value: 'tiktok', icon: 'logo-tiktok', preview: 'Video content' },
+                            { label: 'YouTube', value: 'youtube', icon: 'logo-youtube', preview: 'Video channel' },
+                            { label: 'Portfolio', value: 'portfolio', icon: 'briefcase-outline', preview: 'Work showcase' },
+                            { label: 'Resume/CV', value: 'resume', icon: 'document-text-outline', preview: 'Professional document' },
+                            { label: 'Blog', value: 'blog', icon: 'library-outline', preview: 'Personal blog' },
+                            { label: 'WhatsApp', value: 'whatsapp', icon: 'logo-whatsapp', preview: 'Messaging' },
+                            { label: 'Telegram', value: 'telegram', icon: 'paper-plane-outline', preview: 'Messaging' },
+                            { label: 'Discord', value: 'discord', icon: 'logo-discord', preview: 'Gaming/communities' },
+                            { label: 'Calendly', value: 'calendly', icon: 'calendar-outline', preview: 'Booking' },
+                            { label: 'Venmo', value: 'venmo', icon: 'card-outline', preview: 'Payment' },
+                            { label: 'PayPal', value: 'paypal', icon: 'logo-paypal', preview: 'Payment' },
+                            { label: 'Custom', value: 'custom', icon: 'link-outline', preview: 'Other link' }
+                        ]
+                    },
+                    label: {
+                        type: 'text',
+                        required: true,
+                        label: 'Link Label',
+                        placeholder: 'Follow me on LinkedIn',
+                        maxLength: 50
+                    },
+                    url: {
+                        type: 'text',
+                        required: true,
+                        label: 'URL',
+                        placeholder: 'https://linkedin.com/in/username'
+                    }
+                }
+            }
+        },
+        defaultData: {
+            name: '',
+            title: '',
+            phone: '',
+            email: '',
+            photo: null,
+            website: '',
+            bio: '',
+            customLinks: []
+        },
+        styleOptions: {
+            canOverride: ['colors', 'typography', 'spacing', 'layout'],
+            colorFields: ['primary', 'secondary', 'background', 'text'],
+            defaultStyles: {
+                cardStyle: 'modern', // modern, classic, minimal
+                buttonStyle: 'rounded', // rounded, square, pill
+                iconStyle: 'colored' // colored, monochrome, outlined
+            }
+        },
+        renderingHints: {
+            mobile: {
+                height: 'auto',
+                spacing: 'compact',
+                layout: 'single',
+                specialFeatures: {
+                    // Mobile-optimized contact card features
+                    addToContacts: true, // Native "Add to Contacts" integration
+                    quickActions: true, // Prominent call/message buttons
+                    shareCard: true, // Share contact card functionality
+                    oneHandUsable: true, // Thumb-friendly button placement
+                    swipeActions: true // Swipe gestures for quick actions
+                }
+            },
+            web: {
+                height: 'auto',
+                responsive: true,
+                container: 'narrow', // Business card proportions
+                animation: true,
+                specialFeatures: {
+                    // Desktop-optimized features
+                    hoverEffects: true, // Link hover states
+                    qrCode: true, // Generate QR code for easy mobile sharing
+                    vCard: true, // Download as .vcf file
+                    socialPreview: true, // Rich link previews
+                    printOptimized: true, // CSS for business card printing
+                    copyToClipboard: true // Copy contact info
+                }
             }
         },
         version: '1.0.0'
@@ -940,4 +1109,4 @@ export const getIconForPlatform = (iconValue: string, platform: 'mobile' | 'web'
 export const SCHEMA_VERSION = '1.0.0';
 export const isCompatibleVersion = (version: string): boolean => {
     return version === SCHEMA_VERSION;
-}; 
+};
