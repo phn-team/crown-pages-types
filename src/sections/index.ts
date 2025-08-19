@@ -1013,7 +1013,17 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
                 minItems: 1,
                 maxItems: 20,
                 itemSchema: {
-
+                    icon: {
+                        type: 'select',
+                        required: false,
+                        label: 'Icon',
+                        options: ICON_OPTIONS.map(icon => ({
+                            label: icon.label,
+                            value: icon.value,
+                            icon: icon.mobile,
+                            preview: icon.category
+                        }))
+                    },
                     title: {
                         type: 'text',
                         required: true,
@@ -1036,6 +1046,7 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
             links: [
                 {
                     id: 'temp_link_1',
+                    icon: 'globe',
                     title: 'Link 1',
                     url: 'https://www.google.com'
                 }
@@ -1055,6 +1066,201 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
                 responsive: true,
                 container: 'contained',
                 animation: false
+            }
+        },
+        version: '1.0.0'
+    },
+
+    multiContact: {
+        type: 'multiContact',
+        name: 'Multi-Contact Section',
+        description: 'Professional contact card with expandable drawer for multiple contacts',
+        category: 'data',
+        icon: {
+            mobile: 'people-outline',
+            web: 'users'
+        },
+        fields: {
+            title: {
+                type: 'text',
+                required: true,
+                label: 'Section Title',
+                placeholder: 'Contact Information',
+                maxLength: 80
+            },
+            primaryContact: {
+                type: 'array',
+                required: true,
+                label: 'Primary Contact',
+                minItems: 1,
+                maxItems: 1,
+                itemSchema: {
+                    name: {
+                        type: 'text',
+                        required: true,
+                        label: 'Contact Name',
+                        placeholder: 'John Doe',
+                        maxLength: 100
+                    },
+                    title: {
+                        type: 'text',
+                        required: false,
+                        label: 'Title/Position',
+                        placeholder: 'Admission Coordinator',
+                        maxLength: 150
+                    },
+                    photo: {
+                        type: 'image',
+                        required: false,
+                        label: 'Contact Photo',
+                        accept: ['jpg', 'jpeg', 'png', 'webp'],
+                        maxSize: 2
+                    },
+                    phones: {
+                        type: 'array',
+                        required: false,
+                        label: 'Phone Numbers',
+                        maxItems: 5,
+                        itemSchema: {
+                            label: {
+                                type: 'text',
+                                required: true,
+                                label: 'Phone Label',
+                                placeholder: 'Office',
+                                maxLength: 50
+                            },
+                            number: {
+                                type: 'text',
+                                required: true,
+                                label: 'Phone Number',
+                                placeholder: '(555) 123-4567',
+                                maxLength: 50
+                            }
+                        }
+                    },
+                    email: {
+                        type: 'text',
+                        required: false,
+                        label: 'Email',
+                        placeholder: 'john@example.com',
+                        maxLength: 200
+                    },
+                    address: {
+                        type: 'textarea',
+                        required: false,
+                        label: 'Address',
+                        placeholder: '123 Main St\nCity, State 12345',
+                        rows: 3,
+                        maxLength: 500
+                    },
+                    fax: {
+                        type: 'text',
+                        required: false,
+                        label: 'Fax Number',
+                        placeholder: '(555) 123-4568',
+                        maxLength: 50
+                    }
+                }
+            },
+            additionalContacts: {
+                type: 'array',
+                required: false,
+                label: 'Additional Contacts',
+                maxItems: 10,
+                itemSchema: {
+                    name: {
+                        type: 'text',
+                        required: true,
+                        label: 'Contact Name',
+                        placeholder: 'Jane Smith',
+                        maxLength: 100
+                    },
+                    title: {
+                        type: 'text',
+                        required: false,
+                        label: 'Title/Position',
+                        placeholder: 'Director',
+                        maxLength: 150
+                    },
+                    phones: {
+                        type: 'array',
+                        required: false,
+                        label: 'Phone Numbers',
+                        maxItems: 3,
+                        itemSchema: {
+                            label: {
+                                type: 'text',
+                                required: true,
+                                label: 'Phone Label',
+                                placeholder: 'Office',
+                                maxLength: 50
+                            },
+                            number: {
+                                type: 'text',
+                                required: true,
+                                label: 'Phone Number',
+                                placeholder: '(555) 123-4567',
+                                maxLength: 50
+                            }
+                        }
+                    },
+                    email: {
+                        type: 'text',
+                        required: false,
+                        label: 'Email',
+                        placeholder: 'jane@example.com',
+                        maxLength: 200
+                    }
+                }
+            }
+        },
+        defaultData: {
+            title: 'Contact Information',
+            primaryContact: [
+                {
+                    id: 'primary_1',
+                    name: '',
+                    title: '',
+                    photo: null,
+                    phones: [],
+                    email: '',
+                    address: '',
+                    fax: ''
+                }
+            ],
+            additionalContacts: []
+        },
+        styleOptions: {
+            canOverride: ['colors', 'typography', 'spacing', 'layout'],
+            colorFields: ['primary', 'secondary', 'background', 'text'],
+            defaultStyles: {
+                cardStyle: 'modern',
+                expandableStyle: 'drawer'
+            }
+        },
+        renderingHints: {
+            mobile: {
+                height: 'auto',
+                spacing: 'normal',
+                layout: 'single',
+                specialFeatures: {
+                    addToContacts: true,
+                    quickActions: true,
+                    oneHandUsable: true,
+                    swipeActions: true
+                }
+            },
+            web: {
+                height: 'auto',
+                responsive: true,
+                container: 'contained',
+                animation: true,
+                specialFeatures: {
+                    hoverEffects: true,
+                    copyToClipboard: true,
+                    vCard: true,
+                    printOptimized: true
+                }
             }
         },
         version: '1.0.0'
