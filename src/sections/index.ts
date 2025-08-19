@@ -1235,7 +1235,7 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
             contactPersons: {
                 type: 'array',
                 required: false,
-                label: 'Contact Persons',
+                label: 'Additional Contact',
                 maxItems: 10,
                 itemSchema: {
                     name: {
