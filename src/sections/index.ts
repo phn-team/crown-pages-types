@@ -1166,7 +1166,7 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
     multiContact: {
         type: 'multiContact',
         name: 'Multi-Contact Section',
-        description: 'Professional facility contact with main info and specific contact persons',
+        description: 'Professional business contact with main location info and specific contact persons',
         category: 'data',
         icon: {
             mobile: 'business-outline',
@@ -1180,54 +1180,54 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
                 placeholder: 'Contact Information',
                 maxLength: 80
             },
-            facilityInfo: {
+            businessInfo: {
                 type: 'array',
                 required: true,
-                label: 'Main Facility Information',
+                label: 'Main Business Information',
                 minItems: 1,
                 maxItems: 1,
                 itemSchema: {
                     name: {
                         type: 'text',
                         required: true,
-                        label: 'Facility/Business Name',
-                        placeholder: 'Sarah Daft Home Assisted Living',
+                        label: 'Business/Organization Name',
+                        placeholder: 'Your Business Name',
                         maxLength: 200
                     },
                     address: {
                         type: 'textarea',
                         required: false,
-                        label: 'Address',
-                        placeholder: '737 South 1300 East, Salt Lake City, Utah, 84102',
+                        label: 'Business Address',
+                        placeholder: '123 Main Street, City, State 12345',
                         rows: 2,
                         maxLength: 500
                     },
                     phone: {
                         type: 'text',
                         required: false,
-                        label: 'Main Phone',
-                        placeholder: '(801) 582-5104',
+                        label: 'Main Phone Number',
+                        placeholder: '(555) 123-4567',
                         maxLength: 50
                     },
                     fax: {
                         type: 'text',
                         required: false,
                         label: 'Fax Number',
-                        placeholder: '(801) 582-8808',
+                        placeholder: '(555) 123-4568',
                         maxLength: 50
                     },
                     email: {
                         type: 'text',
                         required: false,
-                        label: 'General Email',
-                        placeholder: 'info@facility.com',
+                        label: 'Main Email',
+                        placeholder: 'info@business.com',
                         maxLength: 200
                     },
                     website: {
                         type: 'text',
                         required: false,
                         label: 'Website',
-                        placeholder: 'https://www.facility.com',
+                        placeholder: 'https://www.yourbusiness.com',
                         maxLength: 300
                     }
                 }
@@ -1242,14 +1242,14 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
                         type: 'text',
                         required: true,
                         label: 'Contact Name',
-                        placeholder: 'Paul Ogilvie',
+                        placeholder: 'John Smith',
                         maxLength: 100
                     },
                     title: {
                         type: 'text',
                         required: false,
                         label: 'Title/Department',
-                        placeholder: 'Admission Coordinator',
+                        placeholder: 'Sales Manager',
                         maxLength: 150
                     },
                     photo: {
@@ -1263,14 +1263,14 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
                         type: 'text',
                         required: false,
                         label: 'Direct Phone',
-                        placeholder: '(801) 582-5104',
+                        placeholder: '(555) 123-4567',
                         maxLength: 50
                     },
                     email: {
                         type: 'text',
                         required: false,
                         label: 'Direct Email',
-                        placeholder: 'paul@facility.com',
+                        placeholder: 'john@business.com',
                         maxLength: 200
                     },
                     extension: {
@@ -1285,9 +1285,9 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
         },
         defaultData: {
             title: 'Contact Information',
-            facilityInfo: [
+            businessInfo: [
                 {
-                    id: 'facility_1',
+                    id: 'business_1',
                     name: '',
                     address: '',
                     phone: '',
