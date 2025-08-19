@@ -1166,11 +1166,11 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
     multiContact: {
         type: 'multiContact',
         name: 'Multi-Contact Section',
-        description: 'Professional contact card with expandable drawer for multiple contacts',
+        description: 'Professional facility contact with main info and specific contact persons',
         category: 'data',
         icon: {
-            mobile: 'people-outline',
-            web: 'users'
+            mobile: 'business-outline',
+            web: 'building'
         },
         fields: {
             title: {
@@ -1180,24 +1180,75 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
                 placeholder: 'Contact Information',
                 maxLength: 80
             },
-            primaryContact: {
+            facilityInfo: {
                 type: 'array',
                 required: true,
-                label: 'Primary Contact',
+                label: 'Main Facility Information',
                 minItems: 1,
                 maxItems: 1,
                 itemSchema: {
                     name: {
                         type: 'text',
                         required: true,
+                        label: 'Facility/Business Name',
+                        placeholder: 'Sarah Daft Home Assisted Living',
+                        maxLength: 200
+                    },
+                    address: {
+                        type: 'textarea',
+                        required: false,
+                        label: 'Address',
+                        placeholder: '737 South 1300 East, Salt Lake City, Utah, 84102',
+                        rows: 2,
+                        maxLength: 500
+                    },
+                    phone: {
+                        type: 'text',
+                        required: false,
+                        label: 'Main Phone',
+                        placeholder: '(801) 582-5104',
+                        maxLength: 50
+                    },
+                    fax: {
+                        type: 'text',
+                        required: false,
+                        label: 'Fax Number',
+                        placeholder: '(801) 582-8808',
+                        maxLength: 50
+                    },
+                    email: {
+                        type: 'text',
+                        required: false,
+                        label: 'General Email',
+                        placeholder: 'info@facility.com',
+                        maxLength: 200
+                    },
+                    website: {
+                        type: 'text',
+                        required: false,
+                        label: 'Website',
+                        placeholder: 'https://www.facility.com',
+                        maxLength: 300
+                    }
+                }
+            },
+            contactPersons: {
+                type: 'array',
+                required: false,
+                label: 'Contact Persons',
+                maxItems: 10,
+                itemSchema: {
+                    name: {
+                        type: 'text',
+                        required: true,
                         label: 'Contact Name',
-                        placeholder: 'John Doe',
+                        placeholder: 'Paul Ogilvie',
                         maxLength: 100
                     },
                     title: {
                         type: 'text',
                         required: false,
-                        label: 'Title/Position',
+                        label: 'Title/Department',
                         placeholder: 'Admission Coordinator',
                         maxLength: 150
                     },
@@ -1208,119 +1259,44 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
                         accept: ['jpg', 'jpeg', 'png', 'webp'],
                         maxSize: 2
                     },
-                    phones: {
-                        type: 'array',
-                        required: false,
-                        label: 'Phone Numbers',
-                        maxItems: 5,
-                        itemSchema: {
-                            label: {
-                                type: 'text',
-                                required: true,
-                                label: 'Phone Label',
-                                placeholder: 'Office',
-                                maxLength: 50
-                            },
-                            number: {
-                                type: 'text',
-                                required: true,
-                                label: 'Phone Number',
-                                placeholder: '(555) 123-4567',
-                                maxLength: 50
-                            }
-                        }
-                    },
-                    email: {
+                    phone: {
                         type: 'text',
                         required: false,
-                        label: 'Email',
-                        placeholder: 'john@example.com',
-                        maxLength: 200
-                    },
-                    address: {
-                        type: 'textarea',
-                        required: false,
-                        label: 'Address',
-                        placeholder: '123 Main St\nCity, State 12345',
-                        rows: 3,
-                        maxLength: 500
-                    },
-                    fax: {
-                        type: 'text',
-                        required: false,
-                        label: 'Fax Number',
-                        placeholder: '(555) 123-4568',
+                        label: 'Direct Phone',
+                        placeholder: '(801) 582-5104',
                         maxLength: 50
-                    }
-                }
-            },
-            additionalContacts: {
-                type: 'array',
-                required: false,
-                label: 'Additional Contacts',
-                maxItems: 10,
-                itemSchema: {
-                    name: {
-                        type: 'text',
-                        required: true,
-                        label: 'Contact Name',
-                        placeholder: 'Jane Smith',
-                        maxLength: 100
-                    },
-                    title: {
-                        type: 'text',
-                        required: false,
-                        label: 'Title/Position',
-                        placeholder: 'Director',
-                        maxLength: 150
-                    },
-                    phones: {
-                        type: 'array',
-                        required: false,
-                        label: 'Phone Numbers',
-                        maxItems: 3,
-                        itemSchema: {
-                            label: {
-                                type: 'text',
-                                required: true,
-                                label: 'Phone Label',
-                                placeholder: 'Office',
-                                maxLength: 50
-                            },
-                            number: {
-                                type: 'text',
-                                required: true,
-                                label: 'Phone Number',
-                                placeholder: '(555) 123-4567',
-                                maxLength: 50
-                            }
-                        }
                     },
                     email: {
                         type: 'text',
                         required: false,
-                        label: 'Email',
-                        placeholder: 'jane@example.com',
+                        label: 'Direct Email',
+                        placeholder: 'paul@facility.com',
                         maxLength: 200
+                    },
+                    extension: {
+                        type: 'text',
+                        required: false,
+                        label: 'Extension',
+                        placeholder: 'ext. 123',
+                        maxLength: 20
                     }
                 }
             }
         },
         defaultData: {
             title: 'Contact Information',
-            primaryContact: [
+            facilityInfo: [
                 {
-                    id: 'primary_1',
+                    id: 'facility_1',
                     name: '',
-                    title: '',
-                    photo: null,
-                    phones: [],
-                    email: '',
                     address: '',
-                    fax: ''
+                    phone: '',
+                    fax: '',
+                    email: '',
+                    website: ''
                 }
             ],
-            additionalContacts: []
+            contactPersons: []
         },
         styleOptions: {
             canOverride: ['colors', 'typography', 'spacing', 'layout'],
