@@ -205,6 +205,98 @@ export const ICON_OPTIONS = [
         mobile: 'thumbs-up',
         web: 'thumbs-up',
         category: 'approval'
+    },
+    // Social Media & Popular Platform Icons
+    {
+        label: 'Facebook',
+        value: 'facebook',
+        mobile: 'logo-facebook',
+        web: 'facebook',
+        category: 'social'
+    },
+    {
+        label: 'Instagram',
+        value: 'instagram',
+        mobile: 'logo-instagram',
+        web: 'instagram',
+        category: 'social'
+    },
+    {
+        label: 'Twitter/X',
+        value: 'twitter',
+        mobile: 'logo-twitter',
+        web: 'twitter',
+        category: 'social'
+    },
+    {
+        label: 'LinkedIn',
+        value: 'linkedin',
+        mobile: 'logo-linkedin',
+        web: 'linkedin',
+        category: 'social'
+    },
+    {
+        label: 'TikTok',
+        value: 'tiktok',
+        mobile: 'logo-tiktok',
+        web: 'video',
+        category: 'social'
+    },
+    {
+        label: 'YouTube',
+        value: 'youtube',
+        mobile: 'logo-youtube',
+        web: 'youtube',
+        category: 'social'
+    },
+    {
+        label: 'WhatsApp',
+        value: 'whatsapp',
+        mobile: 'logo-whatsapp',
+        web: 'message-circle',
+        category: 'social'
+    },
+    {
+        label: 'Email',
+        value: 'email',
+        mobile: 'mail',
+        web: 'mail',
+        category: 'communication'
+    },
+    {
+        label: 'Phone',
+        value: 'phone',
+        mobile: 'call',
+        web: 'phone',
+        category: 'communication'
+    },
+    {
+        label: 'Website',
+        value: 'website',
+        mobile: 'globe',
+        web: 'external-link',
+        category: 'web'
+    },
+    {
+        label: 'Download',
+        value: 'download',
+        mobile: 'download',
+        web: 'download',
+        category: 'action'
+    },
+    {
+        label: 'Calendar',
+        value: 'calendar',
+        mobile: 'calendar',
+        web: 'calendar',
+        category: 'time'
+    },
+    {
+        label: 'Location',
+        value: 'location',
+        mobile: 'location',
+        web: 'map-pin',
+        category: 'place'
     }
 ];
 
