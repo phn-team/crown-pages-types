@@ -222,7 +222,7 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
         fields: {
             title: {
                 type: 'text',
-                required: true,
+                required: false,
                 label: 'Main Title',
                 placeholder: 'Welcome to Your Business',
                 maxLength: 100
