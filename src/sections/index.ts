@@ -1333,6 +1333,409 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
         },
         version: '1.0.0'
     },
+
+    medicalProvider: {
+        type: 'medicalProvider',
+        name: 'Full Page: Medical Provider',
+        description: 'Complete medical provider page with hero, contact info, services, gallery, and more',
+        category: 'content',
+        icon: {
+            mobile: 'medical-outline',
+            web: 'heart-pulse'
+        },
+        fields: {
+            // Basic Provider Information
+            facilityName: {
+                type: 'text',
+                required: true,
+                label: 'Provider/Facility Name',
+                placeholder: 'Medical Center Name',
+                maxLength: 200
+            },
+            heroImage: {
+                type: 'image',
+                required: false,
+                label: 'Hero Background Image',
+                accept: ['jpg', 'jpeg', 'png', 'webp'],
+                maxSize: 5
+            },
+            logo: {
+                type: 'image',
+                required: false,
+                label: 'Provider Logo',
+                accept: ['jpg', 'jpeg', 'png', 'webp'],
+                maxSize: 2
+            },
+            
+            // Address and Location
+            streetAddress: {
+                type: 'text',
+                required: false,
+                label: 'Street Address',
+                placeholder: '123 Medical Drive',
+                maxLength: 200
+            },
+            unit: {
+                type: 'text',
+                required: false,
+                label: 'Unit/Suite',
+                placeholder: 'Suite 100',
+                maxLength: 50
+            },
+            city: {
+                type: 'text',
+                required: false,
+                label: 'City',
+                placeholder: 'Your City',
+                maxLength: 100
+            },
+            state: {
+                type: 'text',
+                required: false,
+                label: 'State',
+                placeholder: 'CA',
+                maxLength: 50
+            },
+            zipCode: {
+                type: 'text',
+                required: false,
+                label: 'ZIP Code',
+                placeholder: '12345',
+                maxLength: 20
+            },
+            
+            // Contact Information
+            phone: {
+                type: 'text',
+                required: false,
+                label: 'Main Phone Number',
+                placeholder: '(555) 123-4567',
+                maxLength: 50
+            },
+            fax: {
+                type: 'text',
+                required: false,
+                label: 'Fax Number',
+                placeholder: '(555) 123-4568',
+                maxLength: 50
+            },
+            email: {
+                type: 'text',
+                required: false,
+                label: 'Email Address',
+                placeholder: 'info@provider.com',
+                maxLength: 200
+            },
+            website: {
+                type: 'text',
+                required: false,
+                label: 'Website URL',
+                placeholder: 'https://www.provider.com',
+                maxLength: 300
+            },
+            
+            // About Section
+            serviceDescription: {
+                type: 'textarea',
+                required: false,
+                label: 'About Description',
+                placeholder: 'Describe your services and what makes you unique...',
+                maxLength: 2000,
+                rows: 6
+            },
+            
+            // Pricing Information
+            priceLow: {
+                type: 'text',
+                required: false,
+                label: 'Starting Price (monthly)',
+                placeholder: '2500'
+            },
+            priceHigh: {
+                type: 'text',
+                required: false,
+                label: 'High Price (monthly)',
+                placeholder: '5000'
+            },
+            
+            // Services/Specialties
+            services: {
+                type: 'array',
+                required: false,
+                label: 'Services & Specialties',
+                maxItems: 15,
+                itemSchema: {
+                    name: {
+                        type: 'text',
+                        required: true,
+                        label: 'Service Name',
+                        placeholder: 'Assisted Living',
+                        maxLength: 100
+                    },
+                    icon: {
+                        type: 'select',
+                        required: false,
+                        label: 'Service Icon',
+                        options: [
+                            { label: 'Assisted Living', value: 'home', icon: 'home-outline', preview: 'home' },
+                            { label: 'Memory Care', value: 'brain', icon: 'library-outline', preview: 'brain' },
+                            { label: 'Skilled Nursing', value: 'medical', icon: 'medkit-outline', preview: 'medical' },
+                            { label: 'Physical Therapy', value: 'fitness', icon: 'fitness-outline', preview: 'fitness' },
+                            { label: 'Occupational Therapy', value: 'hand', icon: 'hand-left-outline', preview: 'therapy' },
+                            { label: 'Speech Therapy', value: 'mic', icon: 'mic-outline', preview: 'speech' },
+                            { label: 'Mental Health', value: 'happy', icon: 'happy-outline', preview: 'mental' },
+                            { label: 'Hospice Care', value: 'heart', icon: 'heart-outline', preview: 'hospice' },
+                            { label: 'Home Health', value: 'home-medical', icon: 'home-outline', preview: 'home health' },
+                            { label: 'Independent Living', value: 'person', icon: 'person-outline', preview: 'independent' },
+                            { label: 'Transportation', value: 'car', icon: 'car-outline', preview: 'transport' },
+                            { label: 'Dining Services', value: 'restaurant', icon: 'restaurant-outline', preview: 'dining' },
+                            { label: 'Activities', value: 'game', icon: 'game-controller-outline', preview: 'activities' },
+                            { label: 'Emergency Response', value: 'alert', icon: 'alert-circle-outline', preview: 'emergency' },
+                            { label: 'Medication Management', value: 'medical-bag', icon: 'medical-outline', preview: 'medication' }
+                        ]
+                    },
+                    available: {
+                        type: 'select',
+                        required: true,
+                        label: 'Available',
+                        options: [
+                            { label: 'Yes', value: 'true' },
+                            { label: 'No', value: 'false' }
+                        ]
+                    }
+                }
+            },
+            
+            // Insurance Information
+            acceptedInsurance: {
+                type: 'array',
+                required: false,
+                label: 'Accepted Insurance',
+                maxItems: 20,
+                itemSchema: {
+                    name: {
+                        type: 'text',
+                        required: true,
+                        label: 'Insurance Provider',
+                        placeholder: 'Medicare',
+                        maxLength: 100
+                    }
+                }
+            },
+            
+            // Admission Coordinator
+            admissionCoordinator: {
+                type: 'text',
+                required: false,
+                label: 'Admission Coordinator Name',
+                placeholder: 'John Smith',
+                maxLength: 100
+            },
+            admissionCoordinatorPhone: {
+                type: 'text',
+                required: false,
+                label: 'Admission Coordinator Phone',
+                placeholder: '(555) 123-4567',
+                maxLength: 50
+            },
+            admissionCoordinatorEmail: {
+                type: 'text',
+                required: false,
+                label: 'Admission Coordinator Email',
+                placeholder: 'admissions@provider.com',
+                maxLength: 200
+            },
+            
+            // Certifications and Awards
+            certifications: {
+                type: 'array',
+                required: false,
+                label: 'Certifications & Awards',
+                maxItems: 10,
+                itemSchema: {
+                    name: {
+                        type: 'text',
+                        required: true,
+                        label: 'Certification/Award Name',
+                        placeholder: 'UALA Certified',
+                        maxLength: 150
+                    },
+                    icon: {
+                        type: 'select',
+                        required: false,
+                        label: 'Badge Icon',
+                        options: [
+                            { label: 'Certificate', value: 'certificate', icon: 'ribbon-outline', preview: 'certificate' },
+                            { label: 'Award', value: 'award', icon: 'trophy-outline', preview: 'award' },
+                            { label: 'Star Rating', value: 'star', icon: 'star-outline', preview: 'rating' },
+                            { label: 'Shield/Security', value: 'shield', icon: 'shield-checkmark-outline', preview: 'security' },
+                            { label: 'Medical Cross', value: 'medical', icon: 'medical-outline', preview: 'medical' },
+                            { label: 'Checkmark', value: 'check', icon: 'checkmark-circle-outline', preview: 'verified' }
+                        ]
+                    }
+                }
+            },
+            
+            // Gallery Integration (reuse existing gallery structure)
+            galleryTitle: {
+                type: 'text',
+                required: false,
+                label: 'Gallery Section Title',
+                placeholder: 'Photos & Videos',
+                maxLength: 80
+            },
+            galleryImages: {
+                type: 'array',
+                required: false,
+                label: 'Gallery Images',
+                maxItems: 20,
+                itemSchema: {
+                    url: {
+                        type: 'image',
+                        required: true,
+                        label: 'Image',
+                        accept: ['jpg', 'jpeg', 'png', 'webp'],
+                        maxSize: 5
+                    },
+                    caption: {
+                        type: 'text',
+                        required: false,
+                        label: 'Caption',
+                        maxLength: 100
+                    }
+                }
+            },
+            
+            // Additional Features
+            hasEmergencyResponse: {
+                type: 'select',
+                required: false,
+                label: '24/7 Emergency Response',
+                options: [
+                    { label: 'Yes', value: 'true' },
+                    { label: 'No', value: 'false' }
+                ]
+            },
+            hasPetFriendly: {
+                type: 'select',
+                required: false,
+                label: 'Pet Friendly',
+                options: [
+                    { label: 'Yes', value: 'true' },
+                    { label: 'No', value: 'false' }
+                ]
+            },
+            operatingHours: {
+                type: 'textarea',
+                required: false,
+                label: 'Operating Hours',
+                placeholder: 'Monday-Friday: 9AM-6PM\nSaturday: 10AM-4PM\nSunday: Closed',
+                rows: 3,
+                maxLength: 300
+            }
+        },
+        defaultData: {
+            facilityName: '',
+            heroImage: null,
+            logo: null,
+            streetAddress: '',
+            unit: '',
+            city: '',
+            state: '',
+            zipCode: '',
+            phone: '',
+            fax: '',
+            email: '',
+            website: '',
+            serviceDescription: '',
+            priceLow: '',
+            priceHigh: '',
+            services: [
+                {
+                    id: 'service_1',
+                    name: 'Assisted Living',
+                    icon: 'home',
+                    available: 'true'
+                },
+                {
+                    id: 'service_2',
+                    name: 'Memory Care',
+                    icon: 'brain',
+                    available: 'true'
+                },
+                {
+                    id: 'service_3',
+                    name: 'Skilled Nursing',
+                    icon: 'medical',
+                    available: 'true'
+                }
+            ],
+            acceptedInsurance: [
+                {
+                    id: 'insurance_1',
+                    name: 'Medicare'
+                },
+                {
+                    id: 'insurance_2',
+                    name: 'Medicaid'
+                }
+            ],
+            admissionCoordinator: '',
+            admissionCoordinatorPhone: '',
+            admissionCoordinatorEmail: '',
+            certifications: [
+                {
+                    id: 'cert_1',
+                    name: 'State Licensed',
+                    icon: 'certificate'
+                }
+            ],
+            galleryTitle: 'Photos & Videos',
+            galleryImages: [],
+            hasEmergencyResponse: 'true',
+            hasPetFriendly: 'false',
+            operatingHours: ''
+        },
+        styleOptions: {
+            canOverride: ['colors', 'typography', 'spacing', 'layout'],
+            colorFields: ['primary', 'secondary', 'background', 'text'],
+            defaultStyles: {
+                heroHeight: 'large', // small, medium, large
+                cardStyle: 'modern', // classic, modern, minimal
+                buttonStyle: 'rounded', // square, rounded, pill
+                layoutDensity: 'comfortable' // compact, comfortable, spacious
+            }
+        },
+        renderingHints: {
+            mobile: {
+                height: 'auto',
+                spacing: 'normal',
+                layout: 'single',
+                specialFeatures: {
+                    addToContacts: true,
+                    quickActions: true, // Quick call/directions buttons
+                    shareCard: true,
+                    oneHandUsable: true,
+                    swipeActions: false // Gallery will handle swiping
+                }
+            },
+            web: {
+                height: 'auto',
+                responsive: true,
+                container: 'full', // This is a full page layout
+                animation: true,
+                specialFeatures: {
+                    hoverEffects: true,
+                    copyToClipboard: true, // Copy contact info
+                    socialPreview: true, // Rich previews for sharing
+                    printOptimized: true, // Print-friendly layout
+                    qrCode: false, // Not needed for provider pages
+                    vCard: true // Download contact as vCard
+                }
+            }
+        },
+        version: '1.0.0'
+    },
 };
 
 // Helper Functions
