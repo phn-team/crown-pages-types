@@ -1632,6 +1632,48 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
                 placeholder: 'Monday-Friday: 9AM-6PM\nSaturday: 10AM-4PM\nSunday: Closed',
                 rows: 3,
                 maxLength: 300
+            },
+            
+            // Documents Section
+            documentsTitle: {
+                type: 'text',
+                required: false,
+                label: 'Documents Section Title',
+                placeholder: 'Resources & Downloads',
+                maxLength: 80
+            },
+            documents: {
+                type: 'array',
+                required: false,
+                label: 'Documents & Files',
+                maxItems: 10,
+                itemSchema: {
+                    name: {
+                        type: 'text',
+                        required: true,
+                        label: 'Document Name',
+                        placeholder: 'Brochure.pdf',
+                        maxLength: 100
+                    },
+                    url: {
+                        type: 'text',
+                        required: true,
+                        label: 'Download URL',
+                        placeholder: 'https://...'
+                    },
+                    size: {
+                        type: 'text',
+                        required: false,
+                        label: 'File Size',
+                        placeholder: '2.5 MB'
+                    },
+                    type: {
+                        type: 'text',
+                        required: false,
+                        label: 'File Type',
+                        placeholder: 'pdf'
+                    }
+                }
             }
         },
         defaultData: {
@@ -1694,7 +1736,9 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
             galleryImages: [],
             hasEmergencyResponse: 'true',
             hasPetFriendly: 'false',
-            operatingHours: ''
+            operatingHours: '',
+            documentsTitle: 'Resources & Downloads',
+            documents: []
         },
         styleOptions: {
             canOverride: ['colors', 'typography', 'spacing', 'layout'],
