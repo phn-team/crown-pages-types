@@ -4,4 +4,6 @@
 export * from './common-types';
 // Export everything from sections
 export * from './sections';
+// Export everything from full pages
+export * from './full-pages';
 
