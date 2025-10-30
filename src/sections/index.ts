@@ -1780,6 +1780,215 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
         },
         version: '1.0.0'
     },
+
+    companyHeader: {
+        type: 'companyHeader',
+        name: 'Company Header',
+        description: 'Display company name, address, and map link',
+        category: 'content',
+        icon: {
+            mobile: 'business-outline',
+            web: 'building'
+        },
+        fields: {
+            companyName: {
+                type: 'text',
+                required: true,
+                label: 'Company Name',
+                placeholder: 'Your Business Name',
+                maxLength: 200
+            },
+            address: {
+                type: 'textarea',
+                required: false,
+                label: 'Address',
+                placeholder: '123 Main Street, City, State 12345',
+                maxLength: 300,
+                rows: 2
+            },
+            mapUrl: {
+                type: 'text',
+                required: false,
+                label: 'Google Maps URL',
+                placeholder: 'https://maps.google.com/?q=...',
+                maxLength: 500
+            }
+        },
+        defaultData: {
+            companyName: 'Company Name',
+            address: '123 Main Street, City, State 12345',
+            mapUrl: ''
+        },
+        styleOptions: {
+            canOverride: ['colors', 'typography', 'spacing'],
+            colorFields: ['primary', 'background', 'text']
+        },
+        renderingHints: {
+            mobile: {
+                height: 'auto',
+                spacing: 'compact',
+                layout: 'single'
+            },
+            web: {
+                responsive: true,
+                container: 'contained',
+                animation: false
+            }
+        },
+        version: '1.0.0'
+    },
+
+    contactCard: {
+        type: 'contactCard',
+        name: 'Contact Card',
+        description: 'Individual contact card with photo, name, role, and contact details',
+        category: 'data',
+        icon: {
+            mobile: 'person-outline',
+            web: 'user'
+        },
+        fields: {
+            name: {
+                type: 'text',
+                required: true,
+                label: 'Name',
+                placeholder: 'Contact Name',
+                maxLength: 100
+            },
+            role: {
+                type: 'text',
+                required: false,
+                label: 'Role/Position',
+                placeholder: 'Manager',
+                maxLength: 100
+            },
+            imageUrl: {
+                type: 'image',
+                required: false,
+                label: 'Profile Photo',
+                accept: ['jpg', 'jpeg', 'png', 'webp'],
+                maxSize: 2
+            },
+            phone: {
+                type: 'text',
+                required: false,
+                label: 'Phone Number',
+                placeholder: '(555) 123-4567',
+                maxLength: 50
+            },
+            email: {
+                type: 'text',
+                required: false,
+                label: 'Email',
+                placeholder: 'contact@example.com',
+                maxLength: 200
+            }
+        },
+        defaultData: {
+            name: 'Contact Name',
+            role: 'Position',
+            imageUrl: '',
+            phone: '',
+            email: ''
+        },
+        styleOptions: {
+            canOverride: ['colors', 'typography', 'spacing'],
+            colorFields: ['primary', 'background', 'text']
+        },
+        renderingHints: {
+            mobile: {
+                height: 'auto',
+                spacing: 'compact',
+                layout: 'single',
+                specialFeatures: {
+                    quickActions: true,
+                    addToContacts: true
+                }
+            },
+            web: {
+                responsive: true,
+                container: 'narrow',
+                animation: false,
+                specialFeatures: {
+                    vCard: true,
+                    copyToClipboard: true
+                }
+            }
+        },
+        version: '1.0.0'
+    },
+
+    amenities: {
+        type: 'amenities',
+        name: 'Amenities',
+        description: 'Grid display of amenities with icons',
+        category: 'content',
+        icon: {
+            mobile: 'list-outline',
+            web: 'list-checks'
+        },
+        fields: {
+            title: {
+                type: 'text',
+                required: true,
+                label: 'Section Title',
+                placeholder: 'Amenities',
+                maxLength: 80
+            },
+            amenities: {
+                type: 'array',
+                required: true,
+                label: 'Amenities List',
+                minItems: 1,
+                maxItems: 20,
+                itemSchema: {
+                    name: {
+                        type: 'text',
+                        required: true,
+                        label: 'Amenity Name',
+                        placeholder: 'Free Wi-Fi',
+                        maxLength: 50
+                    },
+                    icon: {
+                        type: 'select',
+                        required: false,
+                        label: 'Icon',
+                        options: ICON_OPTIONS.map(icon => ({
+                            label: icon.label,
+                            value: icon.value,
+                            icon: icon.mobile,
+                            preview: icon.category
+                        }))
+                    }
+                }
+            }
+        },
+        defaultData: {
+            title: 'Amenities',
+            amenities: [
+                { id: 'temp_1', name: 'Free Wi-Fi', icon: 'wifi' },
+                { id: 'temp_2', name: 'Parking Available', icon: 'car' },
+                { id: 'temp_3', name: '24/7 Access', icon: 'time' }
+            ]
+        },
+        styleOptions: {
+            canOverride: ['colors', 'typography', 'spacing', 'layout'],
+            colorFields: ['primary', 'background', 'text']
+        },
+        renderingHints: {
+            mobile: {
+                height: 'auto',
+                spacing: 'normal',
+                layout: 'grid'
+            },
+            web: {
+                responsive: true,
+                container: 'contained',
+                animation: false
+            }
+        },
+        version: '1.0.0'
+    },
 };
 
 // Helper Functions
