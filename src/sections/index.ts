@@ -1647,33 +1647,40 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
     contactCard: {
         type: 'contactCard',
         name: 'Contact Card',
-        description: 'Individual contact card with photo, name, role, and contact details',
+        description: 'Individual contact card with photo, name, role, and contact details - opens as modal via contact button',
         category: 'data',
         icon: {
             mobile: 'person-outline',
             web: 'user'
         },
         fields: {
-            name: {
+            contactName: {
                 type: 'text',
                 required: true,
-                label: 'Name',
-                placeholder: 'Contact Name',
+                label: 'Contact Name',
+                placeholder: 'John Doe',
                 maxLength: 100
             },
-            role: {
+            contactRole: {
                 type: 'text',
                 required: false,
                 label: 'Role/Position',
-                placeholder: 'Manager',
+                placeholder: 'Sales Director',
                 maxLength: 100
             },
-            imageUrl: {
-                type: 'image',
+            communityName: {
+                type: 'text',
                 required: false,
-                label: 'Profile Photo',
-                accept: ['jpg', 'jpeg', 'png', 'webp'],
-                maxSize: 2
+                label: 'Business/Community Name',
+                placeholder: 'Your Business Name',
+                maxLength: 200
+            },
+            address: {
+                type: 'text',
+                required: false,
+                label: 'Address',
+                placeholder: '123 Main Street, City, State 12345',
+                maxLength: 300
             },
             phone: {
                 type: 'text',
@@ -1688,14 +1695,47 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
                 label: 'Email',
                 placeholder: 'contact@example.com',
                 maxLength: 200
+            },
+            fax: {
+                type: 'text',
+                required: false,
+                label: 'Fax Number',
+                placeholder: '(555) 123-4568',
+                maxLength: 50
+            },
+            personalPhone: {
+                type: 'text',
+                required: false,
+                label: 'Personal Phone',
+                placeholder: '(555) 987-6543',
+                maxLength: 50
+            },
+            logo: {
+                type: 'image',
+                required: false,
+                label: 'Logo/Photo',
+                accept: ['jpg', 'jpeg', 'png', 'webp'],
+                maxSize: 2
+            },
+            link: {
+                type: 'text',
+                required: false,
+                label: 'Website Link',
+                placeholder: 'https://example.com',
+                maxLength: 500
             }
         },
         defaultData: {
-            name: 'Contact Name',
-            role: 'Position',
-            imageUrl: '',
-            phone: '',
-            email: ''
+            contactName: 'Contact Person',
+            contactRole: 'Sales Director',
+            communityName: 'Your Business Name',
+            address: '123 Main Street, City, State 12345',
+            phone: '(123) 456-7890',
+            email: 'contact@example.com',
+            fax: '',
+            personalPhone: '',
+            logo: '',
+            link: ''
         },
         styleOptions: {
             canOverride: ['colors', 'typography', 'spacing'],
@@ -1791,6 +1831,102 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
                 responsive: true,
                 container: 'contained',
                 animation: false
+            }
+        },
+        version: '1.0.0'
+    },
+
+    linksWithContact: {
+        type: 'linksWithContact',
+        name: 'Links',
+        description: 'Display a list of clickable links',
+        category: 'interaction',
+        icon: {
+            mobile: 'link-outline',
+            web: 'link'
+        },
+        fields: {
+            title: {
+                type: 'text',
+                required: false,
+                label: 'Section Title',
+                placeholder: 'Links',
+                maxLength: 80
+            },
+            links: {
+                type: 'array',
+                required: true,
+                label: 'Links',
+                minItems: 1,
+                maxItems: 20,
+                itemSchema: {
+                    title: {
+                        type: 'text',
+                        required: true,
+                        label: 'Link Title',
+                        placeholder: 'Official Website',
+                        maxLength: 100
+                    },
+                    url: {
+                        type: 'text',
+                        required: true,
+                        label: 'URL',
+                        placeholder: 'https://example.com'
+                    },
+                    icon: {
+                        type: 'select',
+                        required: false,
+                        label: 'Icon',
+                        options: ICON_OPTIONS.map(icon => ({
+                            label: icon.label,
+                            value: icon.value,
+                            icon: icon.mobile,
+                            preview: icon.category
+                        }))
+                    },
+                    image: {
+                        type: 'image',
+                        required: false,
+                        label: 'Link Image/Thumbnail',
+                        accept: ['jpg', 'jpeg', 'png', 'webp'],
+                        maxSize: 1
+                    }
+                }
+            }
+        },
+        defaultData: {
+            title: 'Links',
+            links: [
+                {
+                    id: 'temp_link_1',
+                    title: 'Official Website',
+                    url: 'https://example.com',
+                    icon: 'website',
+                    image: ''
+                }
+            ]
+        },
+        styleOptions: {
+            canOverride: ['colors', 'typography', 'spacing'],
+            colorFields: ['primary', 'secondary', 'background', 'text']
+        },
+        renderingHints: {
+            mobile: {
+                height: 'auto',
+                spacing: 'normal',
+                layout: 'single',
+                specialFeatures: {
+                    quickActions: true,
+                    swipeActions: false
+                }
+            },
+            web: {
+                responsive: true,
+                container: 'contained',
+                animation: true,
+                specialFeatures: {
+                    hoverEffects: true
+                }
             }
         },
         version: '1.0.0'
