@@ -957,74 +957,6 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
         version: '1.0.0'
     },
 
-    documents: {
-        type: 'documents',
-        name: 'Documents Section',
-        description: 'Share downloadable documents',
-        category: 'data',
-        icon: {
-            mobile: 'document-text-outline',
-            web: 'file-text'
-        },
-        fields: {
-            title: {
-                type: 'text',
-                required: true,
-                label: 'Section Title',
-                placeholder: 'Resources & Downloads',
-                maxLength: 80
-            },
-            documents: {
-                type: 'array',
-                required: false,
-                label: 'Documents',
-                maxItems: 10,
-                itemSchema: {
-                    name: {
-                        type: 'text',
-                        required: true,
-                        label: 'Document Name',
-                        placeholder: 'Brochure.pdf',
-                        maxLength: 100
-                    },
-                    url: {
-                        type: 'text',
-                        required: true,
-                        label: 'Download URL',
-                        placeholder: 'https://...'
-                    },
-                    size: {
-                        type: 'text',
-                        required: false,
-                        label: 'File Size',
-                        placeholder: '2.5 MB'
-                    }
-                }
-            }
-        },
-        defaultData: {
-            title: 'Resources & Downloads',
-            documents: []
-        },
-        styleOptions: {
-            canOverride: ['colors', 'typography', 'spacing'],
-            colorFields: ['primary', 'background', 'text']
-        },
-        renderingHints: {
-            mobile: {
-                height: 'auto',
-                spacing: 'normal',
-                layout: 'single'
-            },
-            web: {
-                responsive: true,
-                container: 'contained',
-                animation: false
-            }
-        },
-        version: '1.0.0'
-    },
-
     cta: {
         type: 'cta',
         name: 'Call-to-Action Section',
@@ -1070,88 +1002,6 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
             mobile: {
                 height: 'auto',
                 spacing: 'spacious',
-                layout: 'single'
-            },
-            web: {
-                responsive: true,
-                container: 'contained',
-                animation: false
-            }
-        },
-        version: '1.0.0'
-    },
-
-    links: {
-        type: 'links',
-        name: 'Links Section',
-        description: 'Display a list of useful links',
-        category: 'data',
-        icon: {
-            mobile: 'link-outline',
-            web: 'link'
-        },
-        fields: {
-            title: {
-                type: 'text',
-                required: true,
-                label: 'Section Title',
-                placeholder: 'Link List',
-                maxLength: 80
-            },
-            links: {
-                type: 'array',
-                required: true,
-                label: 'Links',
-                minItems: 1,
-                maxItems: 20,
-                itemSchema: {
-                    icon: {
-                        type: 'select',
-                        required: false,
-                        label: 'Icon',
-                        options: ICON_OPTIONS.map(icon => ({
-                            label: icon.label,
-                            value: icon.value,
-                            icon: icon.mobile,
-                            preview: icon.category
-                        }))
-                    },
-                    title: {
-                        type: 'text',
-                        required: true,
-                        label: 'Link Title',
-                        placeholder: 'Link 1',
-                        maxLength: 100
-                    },
-                    url: {
-                        type: 'text',
-                        required: false,
-                        label: 'URL',
-                        placeholder: 'https://www.example.com',
-                        maxLength: 300
-                    }
-                }
-            }
-        },
-        defaultData: {
-            title: 'Link List',
-            links: [
-                {
-                    id: 'temp_link_1',
-                    icon: 'globe',
-                    title: 'Link 1',
-                    url: 'https://www.google.com'
-                }
-            ]
-        },
-        styleOptions: {
-            canOverride: ['colors', 'typography', 'spacing', 'layout'],
-            colorFields: ['primary', 'background', 'text']
-        },
-        renderingHints: {
-            mobile: {
-                height: 'auto',
-                spacing: 'normal',
                 layout: 'single'
             },
             web: {
@@ -1632,48 +1482,6 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
                 placeholder: 'Monday-Friday: 9AM-6PM\nSaturday: 10AM-4PM\nSunday: Closed',
                 rows: 3,
                 maxLength: 300
-            },
-            
-            // Documents Section
-            documentsTitle: {
-                type: 'text',
-                required: false,
-                label: 'Documents Section Title',
-                placeholder: 'Resources & Downloads',
-                maxLength: 80
-            },
-            documents: {
-                type: 'array',
-                required: false,
-                label: 'Documents & Files',
-                maxItems: 10,
-                itemSchema: {
-                    name: {
-                        type: 'text',
-                        required: true,
-                        label: 'Document Name',
-                        placeholder: 'Brochure.pdf',
-                        maxLength: 100
-                    },
-                    url: {
-                        type: 'text',
-                        required: true,
-                        label: 'Download URL',
-                        placeholder: 'https://...'
-                    },
-                    size: {
-                        type: 'text',
-                        required: false,
-                        label: 'File Size',
-                        placeholder: '2.5 MB'
-                    },
-                    type: {
-                        type: 'text',
-                        required: false,
-                        label: 'File Type',
-                        placeholder: 'pdf'
-                    }
-                }
             }
         },
         defaultData: {
@@ -1736,9 +1544,7 @@ export const SECTION_DEFINITIONS: Record<string, SectionDefinition> = {
             galleryImages: [],
             hasEmergencyResponse: 'true',
             hasPetFriendly: 'false',
-            operatingHours: '',
-            documentsTitle: 'Resources & Downloads',
-            documents: []
+            operatingHours: ''
         },
         styleOptions: {
             canOverride: ['colors', 'typography', 'spacing', 'layout'],
